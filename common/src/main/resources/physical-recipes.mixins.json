@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "package": "io.aleosiss.physicalRecipes.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "client": [
+    "ClientRecipeBookMixin",
+    "ImageButtonAccessor",
+    "ScreenMixin"
+  ],
+  "mixins": [
+    "RecipeBookMixin",
+    "ServerPlayerMixin",
+    "ServerRecipeBookMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

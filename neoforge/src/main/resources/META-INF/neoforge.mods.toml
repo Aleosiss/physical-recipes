@@ -1,0 +1,39 @@
+modLoader="kotlinforforge"
+# Change this if you require a certain version of KotlinForForge
+loaderVersion="[5.6,)"
+#issueTrackerURL = ""
+license = "All Rights Reserved"
+
+[[mods]]
+modId = "physical_recipes"
+version = "${version}"
+displayName = "physical recipes"
+authors = ""
+description = '''
+
+'''
+#logoFile = ""
+
+[[dependencies.physical_recipes]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.physical_recipes]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.4,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.physical_recipes]]
+modId = "architectury"
+type = "required"
+versionRange = "[15.0.1,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[mixins]]
+config = "physical-recipes.mixins.json"
