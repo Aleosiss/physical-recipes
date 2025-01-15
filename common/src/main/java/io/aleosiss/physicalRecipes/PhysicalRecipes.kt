@@ -17,8 +17,10 @@ object PhysicalRecipes {
 
     PlayerEvent.PLAYER_JOIN.register { player: Player ->
       // Do something when a player joins the world.
-      player.addItem(Items.BLANK_PHYSICAL_RECIPE.get().defaultInstance)
-      player.addItem(Items.RECIPE_BOOK.get().defaultInstance)
+      if(player.inventory.isEmpty) {
+        player.addItem(Items.BLANK_PHYSICAL_RECIPE.get().defaultInstance)
+        player.addItem(Items.RECIPE_BOOK.get().defaultInstance)
+      }
     }
   }
 }

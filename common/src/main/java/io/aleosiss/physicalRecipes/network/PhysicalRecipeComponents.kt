@@ -1,27 +1,35 @@
 package io.aleosiss.physicalRecipes.network
 
+import com.mojang.serialization.Codec
+import io.aleosiss.physicalRecipes.PhysicalRecipes.MOD_ID
 import net.minecraft.core.Registry
 import net.minecraft.core.component.DataComponentType
-import net.minecraft.core.component.DataComponents
 import net.minecraft.core.registries.BuiltInRegistries
-import java.util.function.UnaryOperator
+import net.minecraft.core.registries.Registries
+
 
 object PhysicalRecipeComponents {
 
   val RECIPE_CONTENT: DataComponentType<RecipeContent> = register("recipe_contents") {
-      it.persistent(RecipeContent.CODEC).networkSynchronized(RecipeContent.STREAM_CODEC).cacheEncoding()
+    persistent(RecipeContent.CODEC)
+    networkSynchronized(RecipeContent.STREAM_CODEC)
+    cacheEncoding()
   }
 
   val RECIPE_BOOK_CONTENT: DataComponentType<RecipeBookContent> = register("recipe_book_contents") {
-      it.persistent(RecipeBookContent.CODEC).networkSynchronized(RecipeBookContent.STREAM_CODEC).cacheEncoding()
+    persistent(RecipeBookContent.CODEC)
+    networkSynchronized(RecipeBookContent.STREAM_CODEC)
+    cacheEncoding()
   }
 
-  private fun <T> register(
-    string: String,
-    unaryOperator: UnaryOperator<DataComponentType.Builder<T>>
+  private inline fun <reified T> register(
+    id: String,
+    noinline configure: DataComponentType.Builder<T>.() -> Unit
   ): DataComponentType<T> {
     return Registry.register(
-      BuiltInRegistries.DATA_COMPONENT_TYPE, string, unaryOperator.apply(DataComponentType.builder()).build()
+      BuiltInRegistries.DATA_COMPONENT_TYPE,
+      "$MOD_ID:$id",
+      DataComponentType.builder<T>().apply(configure).build()
     )
   }
 }

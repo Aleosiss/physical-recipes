@@ -11,7 +11,7 @@
     "homepage": ""
   },
   "license": "All-Rights-Reserved",
-  "icon": "assets/physical-recipes/icon.png",
+  "icon": "assets/physical_recipes/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -22,7 +22,7 @@
     ]
   },
   "mixins": [
-    "physical-recipes.mixins.json"
+    "physical_recipes.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.16.10",

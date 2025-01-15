@@ -36,4 +36,4 @@ ordering = "AFTER"
 side = "BOTH"
 
 [[mixins]]
-config = "physical-recipes.mixins.json"
+config = "physical_recipes.mixins.json"
