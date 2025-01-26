@@ -11,7 +11,11 @@
   "mixins": [
     "RecipeBookMixin",
     "ServerPlayerMixin",
-    "ServerRecipeBookMixin"
+    "ServerRecipeBookMixin",
+    "ShapedRecipeAccessor",
+    "ShapelessRecipeAccessor",
+    "SingleItemRecipeAccessor",
+    "SmithingTransformRecipeAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

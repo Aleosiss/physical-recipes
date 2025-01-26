@@ -1,4 +1,5 @@
 {
   "item.physical_recipes.recipe": "Recipe",
-  "item.physical_recipes.recipe_book": "Recipe Book"
+  "item.physical_recipes.recipe_book": "Recipe Book",
+  "item.physical_recipes.recipe_book.num_recipes": "%s recipes"
 }

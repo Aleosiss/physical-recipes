@@ -1,7 +1,10 @@
 package io.aleosiss.physicalRecipes.fabric
 
 import io.aleosiss.physicalRecipes.PhysicalRecipes
+import io.aleosiss.physicalRecipes.client.PhysicalRecipesClient
 import net.fabricmc.api.ModInitializer
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback
+import net.fabricmc.fabric.mixin.item.client.HeldItemRendererMixin
 
 class PhysicalRecipesFabric : ModInitializer {
   override fun onInitialize() {
@@ -11,5 +14,6 @@ class PhysicalRecipesFabric : ModInitializer {
 
     // Run our common setup.
     PhysicalRecipes.init()
+    HeldItemRendererMixin
   }
 }

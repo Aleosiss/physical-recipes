@@ -2,13 +2,25 @@ package io.aleosiss.physicalRecipes.network
 
 import com.mojang.serialization.Codec
 import com.mojang.serialization.codecs.RecordCodecBuilder
+import io.aleosiss.physicalRecipes.PhysicalRecipes.LOG
+import io.aleosiss.physicalRecipes.item.Recipes.Companion.getResultKey
+import io.aleosiss.physicalRecipes.mixin.ShapedRecipeAccessor
+import io.aleosiss.physicalRecipes.mixin.ShapelessRecipeAccessor
+import io.aleosiss.physicalRecipes.mixin.SingleItemRecipeAccessor
+import io.aleosiss.physicalRecipes.mixin.SmithingTransformRecipeAccessor
 import net.minecraft.network.RegistryFriendlyByteBuf
 import net.minecraft.network.codec.StreamCodec
-import net.minecraft.world.inventory.tooltip.TooltipComponent
+import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.crafting.Recipe
+import net.minecraft.world.item.crafting.ShapedRecipe
+import net.minecraft.world.item.crafting.ShapelessRecipe
+import net.minecraft.world.item.crafting.SingleItemRecipe
+import net.minecraft.world.item.crafting.SmithingTransformRecipe
 
 
-class RecipeContent(private val recipe: Recipe<*>?): TooltipComponent {
+class RecipeContent(val recipe: Recipe<*>?) {
+
+
   companion object {
     val EMPTY: RecipeContent = RecipeContent(null)
 
@@ -22,7 +34,19 @@ class RecipeContent(private val recipe: Recipe<*>?): TooltipComponent {
     }
   }
 }
-class RecipeBookContent(private val recipes: List<Recipe<*>>) {
+
+// extension function on Recipe that returns the recipe result key, parsing most subtypes
+fun Recipe<*>.output(): ItemStack? {
+  return when (this) {
+    is ShapedRecipe -> (this as ShapedRecipeAccessor).result
+    is ShapelessRecipe -> (this as ShapelessRecipeAccessor).result
+    is SingleItemRecipe -> (this as SingleItemRecipeAccessor).result
+    is SmithingTransformRecipe -> (this as SmithingTransformRecipeAccessor).result
+    else -> { LOG.warn("Recipe was not any of the known categories; was ${this::class.java}"); null }
+  }
+}
+
+class RecipeBookContent(val recipes: List<Recipe<*>>) {
 
   companion object {
     val EMPTY = RecipeBookContent(emptyList())

@@ -1,11 +1,9 @@
 package io.aleosiss.physicalRecipes.network
 
-import com.mojang.serialization.Codec
 import io.aleosiss.physicalRecipes.PhysicalRecipes.MOD_ID
 import net.minecraft.core.Registry
 import net.minecraft.core.component.DataComponentType
 import net.minecraft.core.registries.BuiltInRegistries
-import net.minecraft.core.registries.Registries
 
 
 object PhysicalRecipeComponents {
@@ -33,14 +31,3 @@ object PhysicalRecipeComponents {
     )
   }
 }
-
-
-//e: file:///C:/Github/physical-recipes/common/src/main/java/io/aleosiss/physicalRecipes/network/PhysicalRecipeComponents.kt:12:62 Argument type mismatch:
-// actual type is
-// 'net.minecraft.network.codec.StreamCodec<CapturedType(in net.minecraft.network.RegistryFriendlyByteBuf),
-// net.minecraft.world.item.component.BundleContents>',
-//
-// but
-// 'net.minecraft.network.codec.StreamCodec<in net.minecraft.network.RegistryFriendlyByteBuf!,
-//
-// io.aleosiss.physicalRecipes.network.RecipeContent!>!' was expected.

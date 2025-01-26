@@ -19,6 +19,10 @@ object Items {
   @JvmStatic
   val ITEMS: DeferredRegister<Item> = DeferredRegister.create(MOD_ID, Registries.ITEM)
 
+
+  @JvmStatic @Suppress("unused") val RECIPE_KEY: ResourceKey<Item> by lazy { BLANK_PHYSICAL_RECIPE.key }
+  @JvmStatic @Suppress("unused") val RECIPE_BOOK_KEY: ResourceKey<Item> by lazy { RECIPE_BOOK.key }
+  
   @JvmStatic
   val BLANK_PHYSICAL_RECIPE: RegistrySupplier<Item> = ITEMS.register("recipe") {
     RecipeItem(Item.Properties()
