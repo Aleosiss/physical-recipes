@@ -6,13 +6,11 @@ import io.aleosiss.physicalRecipes.PhysicalRecipes.MOD_ID
 import io.aleosiss.physicalRecipes.network.PhysicalRecipeComponents
 import io.aleosiss.physicalRecipes.network.RecipeBookContent
 import io.aleosiss.physicalRecipes.network.RecipeContent
-import net.minecraft.core.component.DataComponents
 import net.minecraft.core.registries.Registries
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
-import net.minecraft.world.item.BundleItem
 import net.minecraft.world.item.Item
-import net.minecraft.world.item.component.BundleContents
+import net.minecraft.world.item.ItemStack
 
 
 object Items {
@@ -40,6 +38,12 @@ object Items {
   fun register() {
     ITEMS.register()
   }
+
+  @JvmStatic
+  fun isModItem(item: ItemStack) = isRecipeItem(item)
+
+  fun isRecipeItem(item: ItemStack) = item.has(PhysicalRecipeComponents.RECIPE_CONTENT)
+    || item.has(PhysicalRecipeComponents.RECIPE_BOOK_CONTENT)
 }
 
 private fun Item.Properties.setId(itemId: String): Item.Properties = setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, itemId)))

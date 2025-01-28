@@ -8,12 +8,14 @@ import net.minecraft.core.registries.BuiltInRegistries
 
 object PhysicalRecipeComponents {
 
+  @JvmStatic
   val RECIPE_CONTENT: DataComponentType<RecipeContent> = register("recipe_contents") {
     persistent(RecipeContent.CODEC)
     networkSynchronized(RecipeContent.STREAM_CODEC)
     cacheEncoding()
   }
 
+  @JvmStatic
   val RECIPE_BOOK_CONTENT: DataComponentType<RecipeBookContent> = register("recipe_book_contents") {
     persistent(RecipeBookContent.CODEC)
     networkSynchronized(RecipeBookContent.STREAM_CODEC)

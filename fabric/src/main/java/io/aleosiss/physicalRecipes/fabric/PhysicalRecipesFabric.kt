@@ -14,6 +14,5 @@ class PhysicalRecipesFabric : ModInitializer {
 
     // Run our common setup.
     PhysicalRecipes.init()
-    HeldItemRendererMixin
   }
 }

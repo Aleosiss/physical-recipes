@@ -6,6 +6,7 @@
   "client": [
     "ClientRecipeBookMixin",
     "ImageButtonAccessor",
+    "ItemInHandRendererMixin",
     "ScreenMixin"
   ],
   "mixins": [
